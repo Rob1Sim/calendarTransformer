@@ -1,4 +1,5 @@
 from datetime import datetime;
+from os import remove,listdir;
 
 """
     Récupère le calendrier enregistrer 
@@ -25,12 +26,12 @@ def write_calendar():
     
     #Génère un nom de fochier unique
     firstCalendar = load_calendar();
-    actualDate = datetime.now().strftime('%d-%m-%Y-%H-%M-%S')
-    newFileName = 'calendar'+actualDate+'.ics'
+    actualDate = datetime.timestamp(datetime.now())
+    newFileName = 'calendar'+str(actualDate)+'.ics'
     
     try:
         
-        with open('var/calendar/'+newFileName, 'a') as newCalendar:
+        with open('var/calendar/new/'+newFileName, 'a') as newCalendar:
             lastLineSummarry = False
             lastLineDesc = False
 
@@ -77,6 +78,9 @@ def write_calendar():
     except FileNotFoundError:
         print("Echec lors de l'ouverture")
 
+
+def delete_obselete_calendar():
+    listdir()
 
 
 if __name__ == '__main__':
