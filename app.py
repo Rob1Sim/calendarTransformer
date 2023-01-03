@@ -1,4 +1,5 @@
 from flask import Flask, render_template, jsonify, send_file
+from os import listdir
 import readAndWriteCalender
 
 app = Flask(__name__)
@@ -6,17 +7,18 @@ app = Flask(__name__)
 
 @app.route('/api/calendar/')
 def return_calendar():
-    load_calendar()
+    basePath = "var/calendar/new/"
+    file = load_calendar(basePath)
     try:
-        return send_file('var/calendar/DU2XWMWQ163866.ics')
+        return send_file(basePath+file)
     except Exception as e:
         return str(e)
 
 
-
-def load_calendar():
+def load_calendar(basePath):
     readAndWriteCalender.main()
-    calendar = open('var/calendar/DU2XWMWQ163866.ics','r+')
-    print(calendar.readlines())
-    calendar.close()
+    
+    
+    
+    return listdir(basePath)[0]
     
