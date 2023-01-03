@@ -80,7 +80,7 @@ def write_calendar():
                                 mot += ""
                             else:
                                 mot += line[lettre]
-                    print(mot)
+                    line = "LOCATION: "+mot+"\n"
 
                     
                 
