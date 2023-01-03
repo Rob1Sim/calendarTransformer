@@ -57,7 +57,7 @@ def write_calendar():
                     #Quitte la boucle lorsque on arrive a la fin du nom de la matière
                     for lettre in range(len(line)):
 
-                        if line[lettre] == ";":
+                        if line[lettre] == "\\":
                             break
                         if lettre not in [i for i in range(8,14)]:
                             ligne += line[lettre]
