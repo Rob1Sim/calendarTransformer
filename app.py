@@ -6,7 +6,7 @@ import readAndWriteCalender
 app = Flask(__name__)
 
 
-@app.route('/api/calendar/')
+@app.route('/api/calendar/calendar.ics')
 def return_calendar():
     fetch_calendar()
     basePath = "var/calendar/new/"
@@ -32,3 +32,8 @@ def fetch_calendar():
     calendar = requests.get(url,allow_redirects=True)
     open('var/calendar/DU2XWMWQ163866.ics','wb').write(calendar.content)
     print("yeah")
+
+
+if __name__ == '__main__':
+    app.run(debug=False, host='192.168.1.59',
+            port=int(os.environ.get('PORT', 8080)))
