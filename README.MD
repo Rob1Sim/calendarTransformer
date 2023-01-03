@@ -10,8 +10,6 @@ Le projet utilise un environnement virtuel Python
 ``.\venv\Scripts\activate`` pour windows  
 
 Il utilise aussi Flask :  
-``flask run``  
+``flask run -h 192.168.X.X``  
 
-## TODO :  
-- Tous les jours réquest le calendrier 
-- return la dernière version du calendrier
+Le fichier présent dans ``calendar/`` doit être remplacer par le fichier ics de son emploie du temps.
