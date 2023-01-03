@@ -69,8 +69,18 @@ def write_calendar():
                     line = "DESCRIPTION:\n"
                     lastLineDesc = True
 
-                
-                
+                if "LOCATION:" in line:
+                    
+                    mot = "salle "
+                    for lettre in range(len(line)):
+                    
+                        if lettre in [i for i in range(12, 15)]:
+                            
+                            if line[lettre] == "_":
+                                mot += ""
+                            else:
+                                mot += line[lettre]
+                    print(mot)
 
                     
                 
