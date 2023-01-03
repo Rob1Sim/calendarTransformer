@@ -93,7 +93,7 @@ def delete_obselete_calendar():
                             (path.join(dir_path, _path)))] = _path
     #On trie les clé (donc les date de modif) sans perdre les valeurs
     listOfTimeStamp = sorted(listOfTimeStamp.items(), key=lambda x: x[1])
-    print(listOfTimeStamp.pop())
+    listOfTimeStamp.pop()
     
     
     for file in listOfTimeStamp:

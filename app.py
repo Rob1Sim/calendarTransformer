@@ -8,6 +8,7 @@ app = Flask(__name__)
 
 @app.route('/api/calendar/')
 def return_calendar():
+    fetch_calendar()
     basePath = "var/calendar/new/"
     file = load_calendar(basePath)
     try:
@@ -30,3 +31,4 @@ def fetch_calendar():
     url = "https://caldav.univ-reims.fr/URCA/cache/DU2XWMWQ163866.ics"
     calendar = requests.get(url,allow_redirects=True)
     open('var/calendar/DU2XWMWQ163866.ics','wb').write(calendar.content)
+    print("yeah")
