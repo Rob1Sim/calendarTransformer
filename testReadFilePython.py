@@ -32,12 +32,22 @@ def write_calendar():
         
         with open('var/calendar/'+newFileName, 'a') as newCalendar:
             lastLineSummarry = False
+            lastLineDesc = False
 
             for line in firstCalendar:
                 
-                if lastLineSummarry:
+                if lastLineSummarry :
                     line = ""
                     lastLineSummarry = False
+
+                if "SEQUENCE:" in line:
+                    lastLineDesc = False
+                
+                if lastLineDesc:
+                    line = ""
+
+                    
+                
                 
                 if "SUMMARY:MR" in line or "SUMMARY:MS" in line:
                     ligne = ""
@@ -52,11 +62,15 @@ def write_calendar():
                     lastLineSummarry = True
                 
                 
+                if "DESCRIPTION:" in line:
+                    line = "DESCRIPTION:\n"
+                    lastLineDesc = True
 
                 
-                #if "DESCRIPTION:" in line:
-                #   line = "DESCRIPTION:"
-                #    print(line)
+                
+
+                    
+                
                     #On réécrit les lignes changés
                 newCalendar.write(line)
 
