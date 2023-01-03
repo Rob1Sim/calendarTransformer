@@ -12,3 +12,6 @@ Le projet utilise un environnement virtuel Python
 Il utilise aussi Flask :  
 ``flask run``  
 
+## TODO :  
+- Tous les jours réquest le calendrier 
+- return la dernière version du calendrier

@@ -104,7 +104,9 @@ def delete_obselete_calendar():
     
     
 
-
-if __name__ == '__main__':
+def main():
     write_calendar()
     delete_obselete_calendar()
+
+if __name__ == '__main__':
+    main();

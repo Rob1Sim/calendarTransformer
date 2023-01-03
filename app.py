@@ -1,4 +1,5 @@
 from flask import Flask, render_template, jsonify, send_file
+import readAndWriteCalender
 
 app = Flask(__name__)
 
@@ -14,6 +15,7 @@ def return_calendar():
 
 
 def load_calendar():
+    readAndWriteCalender.main()
     calendar = open('var/calendar/DU2XWMWQ163866.ics','r+')
     print(calendar.readlines())
     calendar.close()
