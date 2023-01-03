@@ -23,14 +23,22 @@ def load_calendar():
     """
 def write_calendar():
     
+    #Génère un nom de fochier unique
     firstCalendar = load_calendar();
     actualDate = datetime.now().strftime('%d-%m-%Y-%H-%M-%S')
     newFileName = 'calendar'+actualDate+'.ics'
+    
     try:
+        
+        with open('var/calendar/'+newFileName, 'a') as newCalendar:
+            lastLineSummarry = False
 
-        with open('var/calendar/'+newFileName, 'w') as newCalendar:
             for line in firstCalendar:
-                line = line.replace("\n", "")
+                
+                if lastLineSummarry:
+                    line = ""
+                    lastLineSummarry = False
+                
                 if "SUMMARY:MR" in line or "SUMMARY:MS" in line:
                     ligne = ""
                     #Quitte la boucle lorsque on arrive a la fin du nom de la matière
@@ -40,8 +48,17 @@ def write_calendar():
                             break
                         if lettre not in [i for i in range(8,14)]:
                             ligne += line[lettre]
-                    print(ligne)
+                    line = ligne + "\n"
+                    lastLineSummarry = True
+                
+                
 
+                
+                #if "DESCRIPTION:" in line:
+                #   line = "DESCRIPTION:"
+                #    print(line)
+                    #On réécrit les lignes changés
+                newCalendar.write(line)
 
     except FileNotFoundError:
         print("Echec lors de l'ouverture")
