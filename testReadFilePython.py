@@ -1,5 +1,7 @@
-from datetime import datetime;
-from os import remove,listdir;
+from datetime import datetime
+from genericpath import isfile;
+from os import remove,listdir,path;
+from time import sleep
 
 """
     Récupère le calendrier enregistrer 
@@ -78,10 +80,31 @@ def write_calendar():
     except FileNotFoundError:
         print("Echec lors de l'ouverture")
 
-
+    """
+    Cherche et supprime les version obselète du calendrier
+    """
 def delete_obselete_calendar():
-    listdir()
+    dir_path = "var/calendar/new/"
+    listOfTimeStamp = {}
+
+    for _path in listdir(dir_path):
+        if path.isfile(path.join(dir_path,_path)):
+            listOfTimeStamp[datetime.fromtimestamp(path.getmtime
+                            (path.join(dir_path, _path)))] = _path
+    #On trie les clé (donc les date de modif) sans perdre les valeurs
+    listOfTimeStamp = sorted(listOfTimeStamp.items(), key=lambda x: x[1])
+    print(listOfTimeStamp.pop())
+    
+    
+    for file in listOfTimeStamp:
+            try:
+                remove(path.join(dir_path, file[1]))
+            except Exception as e:
+                print(str(e))
+    
+    
 
 
 if __name__ == '__main__':
     write_calendar()
+    delete_obselete_calendar()
