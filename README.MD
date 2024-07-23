@@ -1,7 +1,7 @@
 # IcalendarTransfmormer 
 ### Robin Simonneau  
 
-IcalendarTransformer est un service web permettant de modifier un fichier Icalendar distant afin de le rendre plus lisible pouru un assistant vocal.
+IcalendarTransformer est un service web permettant de modifier un fichier Icalendar distant afin de le rendre plus lisible pour un assistant vocal.
 
 ## Démarage du projet 
 
